@@ -1,31 +1,189 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <title>Ballerines Orientales</title>
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>APORA · Ballerines orientales brodées</title>
+
+  <meta name="description" content="APORA, ballerines orientales artisanales inspirées des Khussa et Jutti : broderies florales, perles et sequins.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-    <header>
-    <p>☰</p>
+<header class="navbar" id="navbar">
+
+  <a href="#accueil" class="navbar__logo">APORA</a>
+
+  <button
+    class="navbar__toggle"
+    id="menu-toggle"
+    aria-label="Ouvrir le menu"
+    aria-expanded="false">
+
+    <span></span>
+    <span></span>
+
+  </button>
+
+  <nav class="navbar__menu" id="menu">
+    <a href="#accueil">Accueil</a>
+    <a href="#collection">Boutique</a>
+    <a href="#collection">Nouveautés</a>
+    <a href="#histoire">Notre histoire</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
 </header>
 
-<section class="hero">
-    <h1>BALLERINES ORIENTALES</h1>
+<main>
 
-    <p>Élégance minimaliste inspirée de l'Orient.</p>
+  <!-- HERO -->
 
-    <button>Découvrir</button>
+  <section class="hero" id="accueil">
 
-</section>
+    <div class="hero-slider">
 
-<section class="best-sellers">
-    <h2>Best-sellers</h2>
+      <div class="slide active"></div>
+      <div class="slide"></div>
+      <div class="slide"></div>
+      <div class="slide"></div>
 
-    <img src="images/Punjabi jutiya.jpg" alt="Produit 1">
-    <img src="images/ballerine blanche.jpg" alt="Produit 2">
-    <img src="images/ballerine verte.jpg" alt="Produit 3">
-</section>
+    </div>
+
+    <div class="hero-overlay"></div>
+
+    <div class="hero__content">
+
+      <h1 class="hero__brand">APORA</h1>
+
+      <p class="hero__subtitle">
+        L'élégance orientale réinventée.
+      </p>
+
+      <a href="#collection" class="button button--light">
+        Découvrir la collection
+      </a>
+
+    </div>
+
+  </section>
+
+  <!-- HISTOIRE -->
+
+  <section class="story" id="histoire">
+
+    <div class="story__text">
+
+      <h2>Des ballerines nées entre deux mondes</h2>
+
+      <p>
+        APORA réinterprète les Khussa et les Jutti,
+        ces chaussures traditionnelles du Pakistan
+        et de l'Inde, avec une sensibilité contemporaine.
+      </p>
+
+      <p>
+        Chaque paire est ornée de broderies florales,
+        de perles et de sequins posés à la main.
+        Une silhouette légère, un savoir-faire ancien,
+        pour des pas qui se remarquent en douceur.
+      </p>
+
+    </div>
+
+    <div
+      class="story__image image-slot"
+      role="img"
+      aria-label="Détail de broderie sur une ballerine APORA"
+      style="--img:url('images/marque.jpg')">
+    </div>
+
+  </section>
+
+  <!-- COLLECTION -->
+
+  <section class="collection" id="collection">
+
+    <h2>La collection</h2>
+
+    <p class="collection__intro">
+      Trois modèles pour découvrir l'univers APORA.
+    </p>
+
+    <div class="collection__grid">
+
+      <article class="card">
+
+        <div
+          class="card__image image-slot"
+          style="--tone:#E8C9C1">
+        </div>
+
+        <h3 class="card__name">Zarina</h3>
+
+        <a href="#" class="button button--dark">
+          Voir le modèle
+        </a>
+
+      </article>
+
+      <article class="card">
+
+        <div
+          class="card__image image-slot"
+          style="--tone:#D9C6A5">
+        </div>
+
+        <h3 class="card__name">Mehr</h3>
+
+        <a href="#" class="button button--dark">
+          Voir le modèle
+        </a>
+
+      </article>
+
+      <article class="card">
+
+        <div
+          class="card__image image-slot"
+          style="--tone:#B9A999">
+        </div>
+
+        <h3 class="card__name">Noor</h3>
+
+        <a href="#" class="button button--dark">
+          Voir le modèle
+        </a>
+
+      </article>
+
+    </div>
+
+  </section>
+
+</main>
+
+<footer class="footer" id="contact">
+
+  <p class="footer__brand">APORA</p>
+
+  <p>contact@apora.com</p>
+
+  <p class="footer__small">
+    © <span id="year"></span> APORA.
+    Tous droits réservés.
+  </p>
+
+</footer>
+
+<script src="script.js"></script>
 
 </body>
+</html>

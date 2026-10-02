@@ -1,0 +1,259 @@
+/* =========================================================
+   APORA · style.css
+   Pour changer les couleurs ou les polices, modifiez
+   uniquement les variables juste en dessous.
+   ========================================================= */
+
+:root {
+  /* Palette */
+  --ivoire:  #FBFAF7;   /* fond principal : blanc cassé très subtil */
+  --creme:   #F5F3EE;   /* fond de la section collection : à peine plus marqué */
+  --beige:   #E9E5DD;   /* traits fins et zones d'image vides */
+  --taupe:   #8B7B6B;
+  --brun:    #4A3D33;   /* texte principal */
+  --rose:    #E8C9C1;   /* rose poudré */
+  --or:      #B8975A;   /* touche dorée */
+
+  /* Polices */
+  --font-titre: "Cormorant Garamond", Georgia, serif;
+  --font-texte: "Jost", "Helvetica Neue", Arial, sans-serif;
+
+  /* IMAGE DU HERO : remplacez par votre photo (dossier images/) */
+  --hero-img: url("images/hero.jpg");
+}
+
+/* ---------- Base ---------- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-texte);
+  font-weight: 300;
+  line-height: 1.8;
+  color: var(--brun);
+  background: var(--ivoire);
+}
+
+a { color: inherit; text-decoration: none; }
+
+h2, h3 { font-family: var(--font-titre); font-weight: 400; line-height: 1.15; }
+h2 { font-size: clamp(2rem, 4vw, 3.2rem); }
+
+:focus-visible { outline: 2px solid var(--or); outline-offset: 4px; }
+
+/* ---------- Boutons ---------- */
+.button {
+  display: inline-block;
+  padding: 0.95rem 2.2rem;
+  font-size: 0.9rem;
+  letter-spacing: 0.12em;
+  border: 1px solid;
+  transition: background 0.3s, color 0.3s, border-color 0.3s;
+}
+.button--light { color: var(--ivoire); border-color: var(--ivoire); }
+.button--light:hover { background: var(--ivoire); color: var(--brun); }
+.button--dark  { color: var(--brun); border-color: var(--taupe); }
+.button--dark:hover  { background: var(--brun); border-color: var(--brun); color: var(--ivoire); }
+
+/* ---------- Emplacement d'image (avec couleur de secours) ----------
+   Si l'image n'existe pas encore, la couleur --tone s'affiche. */
+.image-slot {
+  background-color: var(--tone, var(--beige));
+  background-image: var(--img);
+  background-size: cover;
+  background-position: center;
+}
+
+/* ---------- Navigation ---------- */
+.navbar {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.6rem 5vw;
+  color: var(--ivoire);
+  transition: background 0.4s, color 0.4s, padding 0.4s, box-shadow 0.4s;
+}
+.navbar--scrolled {
+  padding: 0.9rem 5vw;
+  background: rgba(251, 250, 247, 0.94);
+  backdrop-filter: blur(8px);
+  color: var(--brun);
+  box-shadow: 0 1px 0 rgba(139, 123, 107, 0.2);
+}
+.navbar__logo {
+  font-family: var(--font-titre);
+  font-size: 1.7rem;
+  letter-spacing: 0.35em;
+}
+.navbar__menu { display: flex; gap: 2.5rem; font-size: 0.92rem; letter-spacing: 0.08em; }
+.navbar__menu a { position: relative; padding-bottom: 2px; }
+.navbar__menu a::after {
+  content: ""; position: absolute; left: 0; bottom: 0;
+  width: 0; height: 1px; background: var(--or); transition: width 0.3s;
+}
+.navbar__menu a:hover::after { width: 100%; }
+
+.navbar__toggle { display: none; background: none; border: 0; cursor: pointer; width: 32px; height: 20px; position: relative; color: inherit; }
+.navbar__toggle span { position: absolute; left: 0; width: 100%; height: 1px; background: currentColor; transition: transform 0.3s, top 0.3s; }
+.navbar__toggle span:first-child { top: 4px; }
+.navbar__toggle span:last-child  { top: 14px; }
+.navbar__toggle[aria-expanded="true"] span:first-child { top: 9px; transform: rotate(45deg); }
+.navbar__toggle[aria-expanded="true"] span:last-child  { top: 9px; transform: rotate(-45deg); }
+
+/* ---------- Hero ---------- */
+.hero {
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--ivoire);
+
+  position: relative;
+  overflow: hidden;
+}
+.hero-slider {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+
+  background-size: cover;
+  background-position: center;
+
+  opacity: 0;
+  transition: opacity 1.8s ease;
+}
+
+.slide.active {
+  opacity: 1;
+}
+
+.slide:nth-child(1) {
+  background-image: url("images/hero1.jpg");
+}
+
+.slide:nth-child(2) {
+  background-image: url("images/hero2.jpg");
+}
+
+.slide:nth-child(3) {
+  background-image: url("images/hero3.jpg");
+}
+
+.slide:nth-child(4) {
+  background-image: url("images/hero4.jpg");
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      rgba(74,61,51,0.25),
+      rgba(74,61,51,0.45)
+    );
+
+  z-index: 1;
+}
+
+.hero__content {
+  position: relative;
+  z-index: 2;
+}
+.hero__content { padding: 0 5vw; width: 100%; }
+
+/* Le nom de marque : élément principal de la page */
+.hero__brand {
+  font-family: var(--font-titre);
+  font-weight: 300;
+  font-size: clamp(4.5rem, 21vw, 19rem);
+  line-height: 0.95;
+  letter-spacing: 0.12em;
+  margin-right: -0.12em; /* recentre malgré l'espacement final */
+}
+.hero__subtitle {
+  margin: 1.2rem 0 2.6rem;
+  font-family: var(--font-titre);
+  font-style: italic;
+  font-size: clamp(1.3rem, 2.6vw, 2rem);
+  color: #E9D3A6; /* or clair */
+}
+
+/* Animation d'arrivée : une seule fois, au chargement */
+.hero__brand, .hero__subtitle, .hero .button { animation: apparition 1.4s ease both; }
+.hero__subtitle { animation-delay: 0.3s; }
+.hero .button   { animation-delay: 0.6s; }
+@keyframes apparition {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* ---------- Présentation ---------- */
+.story {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8vw;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 9rem 5vw;
+}
+.story__text h2 { margin-bottom: 2rem; }
+.story__text p { max-width: 46ch; margin-bottom: 1.2rem; color: #5E5047; }
+.story__image { aspect-ratio: 4 / 5; border-radius: 200px 200px 0 0; } /* forme d'arche */
+
+/* ---------- Collection ---------- */
+.collection { background: var(--creme); padding: 8rem 5vw; text-align: center; }
+.collection__intro { margin: 1rem 0 4rem; color: var(--taupe); }
+.collection__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.card__image { aspect-ratio: 4 / 5; margin-bottom: 1.5rem; }
+.card__name { font-size: 1.9rem; margin-bottom: 1.2rem; }
+
+/* ---------- Pied de page ---------- */
+.footer { padding: 5rem 5vw 3rem; text-align: center; font-size: 0.95rem; color: var(--taupe); }
+.footer__brand { font-family: var(--font-titre); font-size: 2rem; letter-spacing: 0.4em; color: var(--brun); margin-bottom: 0.8rem; }
+.footer__small { margin-top: 2rem; font-size: 0.8rem; }
+
+/* ---------- Tablette ---------- */
+@media (max-width: 900px) {
+  .story { grid-template-columns: 1fr; padding: 6rem 6vw; gap: 3.5rem; }
+  .story__image { max-width: 420px; }
+  .collection__grid { grid-template-columns: 1fr; max-width: 420px; gap: 4rem; }
+}
+
+/* ---------- Téléphone : menu déroulant ---------- */
+@media (max-width: 700px) {
+  .navbar__toggle { display: block; }
+  .navbar__menu {
+    position: absolute; top: 100%; left: 0; right: 0;
+    flex-direction: column; gap: 0; padding: 1rem 5vw 2rem;
+    background: var(--ivoire); color: var(--brun);
+    display: none;
+  }
+  .navbar__menu.is-open { display: flex; }
+  .navbar__menu a { padding: 0.9rem 0; border-bottom: 1px solid var(--beige); }
+  .navbar__logo { font-size: 1.4rem; }
+}
+
+
+/* ---------- Accessibilité : réduire les animations ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .hero__brand, .hero__subtitle, .hero .button { animation: none; }
+}
